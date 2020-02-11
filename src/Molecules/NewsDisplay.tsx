@@ -8,16 +8,24 @@ import Col from "react-bootstrap/Col";
 // Molecules Lists
 import NewsList from "./NewsList";
 
-export default class NewsDisplay extends Component<{}, {}> {
+export interface MyProps {
+  news: any[];
+}
+
+export default class NewsDisplay extends Component<MyProps, {}> {
   render() {
     return (
       <Row>
         <Col>
-          <NewsList />
-          <NewsList />
-          <NewsList />
-          <NewsList />
-          <NewsList />
+          {this.props.news.map(news1 => (
+            <NewsList
+              key={news1["id"]}
+              heading={news1["title"]}
+              points={news1["points"]}
+              comment={news1["comments_count"]}
+              source={news1["domain"]}
+            />
+          ))}
         </Col>
       </Row>
     );

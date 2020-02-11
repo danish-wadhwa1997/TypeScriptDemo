@@ -7,7 +7,11 @@ import Col from "react-bootstrap/Col";
 import CommentIcon from "../Atoms/CommentIcon";
 import CommentsNo from "../Atoms/CommentsNo";
 
-export default class CommentSection extends Component<{}, {}> {
+export interface MyProps {
+  comments: number;
+}
+
+export default class CommentSection extends Component<MyProps, {}> {
   render() {
     return (
       <Col
@@ -17,7 +21,7 @@ export default class CommentSection extends Component<{}, {}> {
       >
         <CommentIcon />
 
-        <CommentsNo />
+        <CommentsNo comments={this.props.comments} />
       </Col>
     );
   }

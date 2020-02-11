@@ -8,13 +8,18 @@ import Col from "react-bootstrap/Col";
 import Tabs from "../Molecules/Tabs";
 import NewsDisplay from "../Molecules/NewsDisplay";
 
-export default class MainView extends Component<{}, {}> {
+export interface MyProps {
+  data: any[];
+}
+
+export default class MainView extends Component<MyProps, {}> {
   render() {
+    console.log(this.props.data);
     return (
       <Row>
         <Col>
           <Tabs />
-          <NewsDisplay />
+          <NewsDisplay news={this.props.data} />
         </Col>
       </Row>
     );

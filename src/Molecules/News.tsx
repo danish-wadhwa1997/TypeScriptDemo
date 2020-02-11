@@ -7,12 +7,18 @@ import Col from "react-bootstrap/Col";
 import HeadingList from "../Atoms/HeadingList";
 import InfoSection from "./InfoSection";
 
-export default class News extends Component<{}, {}> {
+export interface MyProps {
+  heading: string;
+  points: number;
+  source: string;
+}
+
+export default class News extends Component<MyProps, {}> {
   render() {
     return (
       <Col xs={10}>
-        <HeadingList />
-        <InfoSection />
+        <HeadingList heading={this.props.heading} />
+        <InfoSection points={this.props.points} source={this.props.source} />
       </Col>
     );
   }

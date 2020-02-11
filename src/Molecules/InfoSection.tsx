@@ -8,14 +8,19 @@ import Col from "react-bootstrap/Col";
 import Points from "../Atoms/Points";
 import Source from "../Atoms/Source";
 
-export default class InfoSection extends Component<{}, {}> {
+export interface MyProps {
+  points: number;
+  source: string;
+}
+
+export default class InfoSection extends Component<MyProps, {}> {
   render() {
     return (
       <Row>
         <Col xs={{ span: 5 }}>
           <Row>
-            <Points /> |
-            <Source />
+            <Points points={this.props.points} /> |
+            <Source source={this.props.source} />
           </Row>
         </Col>
       </Row>
