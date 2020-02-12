@@ -42,9 +42,9 @@ export default class Tabs extends Component<MyProps, {}> {
     return (
       <Row style={{ backgroundColor: "#e56401" }}>
         <Col>
-          <Nav justify variant="tabs" defaultActiveKey="/home" onClick={this.getTab}>
+          <Nav justify variant="tabs" defaultActiveKey="home" onClick={this.getTab}>
             <Nav.Item>
-              <Nav.Link href="/home" >Hot</Nav.Link>
+              <Nav.Link eventKey="home" >Hot</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="new" >New</Nav.Link>
