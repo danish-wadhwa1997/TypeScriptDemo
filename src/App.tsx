@@ -14,8 +14,14 @@ export interface MyState {
 }
 
 export default class App extends Component<{}, MyState> {
-  async componentDidMount() {
-    await fetch("https://api.hnpwa.com/v0/news/1.json")
+   componentDidMount() {
+    
+    this.getData();
+  }
+
+  async getData(url:string="https://api.hnpwa.com/v0/news/1.json")
+  {
+    await fetch(url)
       .then(response => response.json())
       .then(json =>
         this.setState({
@@ -23,6 +29,7 @@ export default class App extends Component<{}, MyState> {
         })
       );
   }
+
 
   render() {
     if (this.state) {
