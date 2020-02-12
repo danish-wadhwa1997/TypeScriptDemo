@@ -19,16 +19,23 @@ export default class App extends Component<{}, MyState> {
     this.getData();
   }
 
-  async getData(url:string="https://api.hnpwa.com/v0/news/1.json")
+ getData=(url:string="https://api.hnpwa.com/v0/news/1.json")=>
   {
-    await fetch(url)
-      .then(response => response.json())
-      .then(json =>
-        this.setState({
+    console.log("inside app get data"+url);
+
+     fetch(url)
+      .then(response =>{ 
+        console.log("response "+response);
+     return   response.json();})
+      .then(json =>{
+        console.log("data "+JSON.stringify(json));
+        return  this.setState({
           newsList: json
-        })
-      );
+        });
+
+      });
   }
+
 
 
   render() {
@@ -36,7 +43,7 @@ export default class App extends Component<{}, MyState> {
       return (
         <Container fluid={true}>
           <CustomNavbar />
-          <MainView data={this.state.newsList} />
+          <MainView data={this.state.newsList} onTabChange={this.getData} />
         </Container>
       );
     }

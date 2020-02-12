@@ -9,16 +9,22 @@ import Tabs from "../Molecules/Tabs";
 import NewsDisplay from "../Molecules/NewsDisplay";
 
 export interface MyProps {
-  data: any[];
+  data: any[],
+  onTabChange:(url:string)=>void
 }
 
 export default class MainView extends Component<MyProps, {}> {
+  
+  justTest=(url:string)=>{
+    console.log("reached main view");
+    this.props.onTabChange(url);
+  }
+  
   render() {
-    console.log(this.props.data);
     return (
       <Row>
         <Col>
-          <Tabs />
+          <Tabs onTabChangeChild={this.justTest} />
           <NewsDisplay news={this.props.data} />
         </Col>
       </Row>
